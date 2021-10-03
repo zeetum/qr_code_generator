@@ -1,4 +1,3 @@
-from functools import reduce
 import base64
 from io import BytesIO
 
