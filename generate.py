@@ -1,7 +1,8 @@
-from flask import Flask, request
 from functools import reduce
 import base64
 from io import BytesIO
+
+from flask import Flask, request
 import qrcode
 
 def get_qrcode(student):
