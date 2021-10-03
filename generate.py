@@ -1,26 +1,33 @@
+from flask import Flask, request
 import base64
 from io import BytesIO
-from flask import Flask, request
 import qrcode
 
 def get_qrcode(student):
     url = "https://sig.site.internal:1000/logout?;"
     url += "https://sig.site.internal:1000/login?#"
-
-    qrcode_url = url + student
+    url += student
 
     qr = qrcode.QRCode(version=1, box_size=10, border=5)
-    qr.add_data(qrcode_url)
+    qr.add_data(url)
     qr.make(fit=True)
 
-    return qr.make_image(fill='black', back_color='white')
+    img = qr.make_image(fill='black', back_color='white')
+    img_buf = BytesIO()
+    img.save(img_buf)
+    img_buf.seek(0)
+
+    data = img_buf.read()
+    data = base64.b64encode(data)
+    data = data.decode()
+
+    return data
 
 
 app = Flask(__name__)
 @app.route("/")
 def submit_form():
-    form = """
-    <form action="/submit_usernames" method="POST">
+    form = """<form action="/submit_usernames" method="POST">
         <textarea name="student_logins" rows="10"></textarea>
         <input type="submit">
     </form>"""
@@ -33,15 +40,8 @@ def submit_usernames():
     
     qr_html = ""
     for student in students:
-        img = get_qrcode(student)
-        img_buf = BytesIO()
-        img.save(img_buf)
-        img_buf.seek(0)
+        data = get_qrcode(student)
 
-        data = img_buf.read()
-        data = base64.b64encode(data)
-        data = data.decode()
-        
         html = "<div class='qr_code_div'>"
         html += "<h2>" + student + "</h2>"
         html += "<img alt={} src='data:image/png;base64,{}'>".format(student, data)
@@ -49,6 +49,7 @@ def submit_usernames():
 
         qr_html += html
     
+
     html = """
     <!DOCTYPE html>
     <html>
