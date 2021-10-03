@@ -1,6 +1,5 @@
 import base64
 from io import BytesIO
-
 from flask import Flask, request
 import qrcode
 
