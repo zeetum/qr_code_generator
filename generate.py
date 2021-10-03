@@ -35,8 +35,8 @@ def submit_usernames():
     
     qr_codes = []
     for student in students:
-        img_buf = BytesIO()
         img = get_qrcode(student)
+        img_buf = BytesIO()
         img.save(img_buf)
         img_buf.seek(0)
 
