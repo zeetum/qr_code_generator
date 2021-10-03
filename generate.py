@@ -21,7 +21,8 @@ def get_qrcode(student):
 app = Flask(__name__)
 @app.route("/")
 def submit_form():
-    form = """<form action="/submit_usernames" method="POST">
+    form = """
+    <form action="/submit_usernames" method="POST">
         <textarea name="student_logins" rows="10"></textarea>
         <input type="submit">
     </form>"""
