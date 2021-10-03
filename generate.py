@@ -33,7 +33,7 @@ def submit_form():
 def submit_usernames():
     students = request.form['student_logins'].splitlines()
     
-    qr_codes = []
+    qr_html = ""
     for student in students:
         img = get_qrcode(student)
         img_buf = BytesIO()
@@ -49,10 +49,8 @@ def submit_usernames():
         html += "<img alt={} src='data:image/png;base64,{}'>".format(student, data)
         html += "</div>"
 
-        qr_codes += html
+        qr_html += html
     
-    qr_html = reduce(lambda x, y: x + y, qr_codes)
-
     html = """
     <!DOCTYPE html>
     <html>
