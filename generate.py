@@ -53,7 +53,7 @@ def submit_usernames():
     <!DOCTYPE html>
     <html>
     <head>
-        <title>Flask app</title>
+        <title>DOE QR Codes</title>
         <style>
             .qr_code_div {float: left; border-style: solid;}
             .qr_code_div h2 {text-align: center}
