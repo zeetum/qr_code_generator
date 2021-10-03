@@ -22,7 +22,7 @@ app = Flask(__name__)
 @app.route("/")
 def submit_form():
     form = """<form action="/submit_usernames" method="POST">
-        <textarea name="student_logins" cols="10"></textarea>
+        <textarea name="student_logins" rows="10"></textarea>
         <input type="submit">
     </form>"""
     return form
