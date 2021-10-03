@@ -56,7 +56,7 @@ def submit_usernames():
     <head>
         <title>Flask app</title>
         <style>
-            .qr_code_div {float: left}
+            .qr_code_div {float: left; border-style: solid;}
             .qr_code_div h2 {text-align: center}
         </style>
     </head>
