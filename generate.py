@@ -59,7 +59,6 @@ def submit_usernames():
             .qr_code_div h2 {text-align: center}
         </style>
 
-        // A slider to change the size of the QR Codes
         <script>
             document.addEventListener("DOMContentLoaded", function() {
                 const height = document.getElementsByTagName("img")[0].width
@@ -76,7 +75,6 @@ def submit_usernames():
         </script>
     </head>
     <body>
-        // A slider to change the size of the QR Codes
         <div id='change_image_size'>
             <h2>Change Image Size</h2>
             <input id="image_slider" type="range" min="1" max="100" value="1" step="1" class="slider" style="width: 500px">
