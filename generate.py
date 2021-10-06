@@ -75,7 +75,7 @@ def submit_usernames():
     </head>
     <body>
         <div id='change_image_size'>
-            <h2>Change Image Size</h2>
+            <p><b>Change Image Size</b></p>
             <input id="image_slider" type="range" min="1" max="100" value="100" step="1" style="width: 500px">
         </div>
         """ + qr_html + """
