@@ -63,7 +63,7 @@ def submit_usernames():
             document.addEventListener("DOMContentLoaded", function() {
                 const height = document.getElementsByTagName("img")[0].width
                 const width = document.getElementsByTagName("img")[0].height
-                var image_slider = document.getElementById("image_slider")
+                const image_slider = document.getElementById("image_slider")
                 image_slider.addEventListener("change",function() {
                     for (qr_image of document.getElementsByTagName("img")) {
                         qr_image.width = width * (image_slider.value / 100)
