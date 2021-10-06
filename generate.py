@@ -26,8 +26,7 @@ def get_qrcode(student):
 app = Flask(__name__)
 @app.route("/")
 def submit_form():
-    form = """
-    <form action="/submit_usernames" method="POST">
+    form = """<form action="/submit_usernames" method="POST">
         <textarea name="student_logins" rows="10"></textarea>
         <input type="submit">
     </form>"""
@@ -59,8 +58,30 @@ def submit_usernames():
             .qr_code_div {float: left; border-style: solid;}
             .qr_code_div h2 {text-align: center}
         </style>
+
+        // A slider to change the size of the QR Codes
+        <script>
+            document.addEventListener("DOMContentLoaded", function() {
+                const height = document.getElementsByTagName("img")[0].width
+                const width = document.getElementsByTagName("img")[0].height
+                var image_slider = document.getElementById("image_slider")
+                image_slider.addEventListener("change",function() {
+                    for (qr_div of document.getElementsByClassName("qr_code_div")) {
+                        let qr_image = qr_div.getElementsByTagName("img")[0]
+                        console.log(image_slider.value)
+                        qr_image.width = width * (image_slider.value / 100)
+                        qr_image.height = height * (image_slider.value / 100)
+                    }
+                });
+            });
+        </script>
     </head>
     <body>
+        // A slider to change the size of the QR Codes
+        <div id='change_image_size'>
+            <h2>Change Image Size</h2>
+            <input id="image_slider" type="range" min="1" max="100" value="1" step="1" class="slider" style="width: 500px">
+        </div>
         """ + qr_html + """
     </body>
     </html>"""
