@@ -38,7 +38,7 @@ def submit_form():
         </style>
     </head>
     <body>
-        <div id="input_form"><p><b>Paste students into the text box</b></p>
+        <div id="input_form"><p><b>Paste student logins into the text box</b></p>
             <form action="/submit_usernames" method="POST">
                 <textarea name="student_logins"></textarea>
                 <input type="submit" value="Get QR Codes">
