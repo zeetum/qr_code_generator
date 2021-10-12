@@ -26,11 +26,27 @@ def get_qrcode(student):
 app = Flask(__name__)
 @app.route("/")
 def submit_form():
-    form = """<form action="/submit_usernames" method="POST">
-        <textarea name="student_logins" rows="10"></textarea>
-        <input type="submit">
-    </form>"""
-    return form
+    html = """
+    <!DOCTYPE html>
+    <html>
+    <head>
+        <title>DOE QR Codes</title>
+        <style>
+            #input_form {width: 300px;}
+            textarea {width: 300px; height: 20em; box-sizing: border-box;}
+            input {width: 300px;}
+        </style>
+    </head>
+    <body>
+        <div id="input_form"><p><b>Paste students into the text box</b></p>
+            <form action="/submit_usernames" method="POST">
+                <textarea name="student_logins"></textarea>
+                <input type="submit" value="Get QR Codes">
+            </form>
+        </div>
+    </body>
+    </html>"""
+    return html
 
 
 @app.route('/submit_usernames', methods=['POST'])
