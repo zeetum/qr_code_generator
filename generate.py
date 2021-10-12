@@ -33,7 +33,7 @@ def submit_form():
         <title>DOE QR Codes</title>
         <style>
             #input_form {width: 300px;}
-            textarea {width: 300px; height: 20em; box-sizing: border-box;}
+            textarea {width: 300px; height: 20em; box-sizing: border-box; border:1px solid;}
             input {width: 300px;}
         </style>
     </head>
