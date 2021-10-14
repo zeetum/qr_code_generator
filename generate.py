@@ -1,3 +1,4 @@
+# pip3 install {flask,qrcode,pillow}
 from flask import Flask, request
 import base64
 from io import BytesIO
