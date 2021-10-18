@@ -31,7 +31,7 @@ def submit_form():
     <!DOCTYPE html>
     <html>
     <head>
-        <title>DOE QR Codes</title>
+        <title>QR Code Login Generator</title>
         <style>
             #input_form {width: 300px;}
             textarea {width: 300px; height: 20em; box-sizing: border-box; border:1px solid;}
@@ -70,7 +70,7 @@ def submit_usernames():
     <!DOCTYPE html>
     <html>
     <head>
-        <title>QR Codes</title>
+        <title>QR Code Login Generator</title>
         <style>
             .qr_code_div {float: left; border-style: solid;}
             .qr_code_div h2 {text-align: center}
