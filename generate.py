@@ -5,7 +5,7 @@ from io import BytesIO
 import qrcode
 
 def get_qrcode(student):
-    url = "https://sig.site.internal:1000/logout?;"
+    url = "https://:1000/logout?;"
     url += "https://sig.site.internal:1000/login?#" + student
 
     qr = qrcode.QRCode(version=1, box_size=10, border=5)
