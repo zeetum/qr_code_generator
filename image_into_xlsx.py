@@ -13,22 +13,28 @@ def get_qrcode(filename):
     img.save(img_buf)
     img_buf.seek(0)
 
-    return img_buf
+    return (img_buf, img.size)
 
 workbook = xlsxwriter.Workbook('audiobooks.xlsx')
 worksheet = workbook.add_worksheet()
 with open("audio_links.txt", "r") as csv_file:
     worksheet.set_column('A:A', 40)
-    worksheet.set_column('B:B', 85)
+    col_width = 0
     for row, line in enumerate(csv_file):
         row += 1
 
-        name = ' '.join(line.split()[4:])
-        filename = "http://e5167s01sv011.indigo.schools.internal/Audiobooks/" + '%20'.join(line.split()[4:])
-        image = get_qrcode(filename)
+        name = line[:-4]
+        filename = line
 
-        worksheet.set_row(row -1, 400)
+        (image, (width, height)) = get_qrcode(filename)
+        if width > col_width:
+            col_width = width
+
+        worksheet.set_row_pixels(row -1, height)
         worksheet.write('A' + str(row), name[:-4])
         worksheet.insert_image('B' + str(row), filename, {'image_data': image})
+
+    print(col_width)
+    worksheet.set_column_pixels('B:B', col_width)
 
 workbook.close()
