@@ -21,7 +21,6 @@ with open("audio_links.txt", "r") as csv_file:
     worksheet.set_column('A:A', 40)
     col_width = 0
     for row, line in enumerate(csv_file):
-        row += 1
 
         name = line[:-4]
         filename = line
@@ -30,8 +29,8 @@ with open("audio_links.txt", "r") as csv_file:
         if width > col_width:
             col_width = width
 
-        worksheet.set_row_pixels(row -1, height)
-        worksheet.write('A' + str(row), name[:-4])
+        worksheet.set_row_pixels(row, height)
+        worksheet.write('A' + str(row + 1), name[:-4])
         worksheet.insert_image('B' + str(row), filename, {'image_data': image})
 
     print(col_width)
