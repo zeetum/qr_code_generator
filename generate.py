@@ -78,8 +78,8 @@ def submit_usernames():
 
         <script>
             document.addEventListener("DOMContentLoaded", function() {
-                const height = document.getElementsByTagName("img")[0].width
-                const width = document.getElementsByTagName("img")[0].height
+                const height = document.getElementsByTagName("img")[0].height
+                const width = document.getElementsByTagName("img")[0].width
                 const image_slider = document.getElementById("image_slider")
                 image_slider.addEventListener("change",function() {
                     for (qr_image of document.getElementsByTagName("img")) {
